@@ -1,10 +1,10 @@
 const express = require("express");
+const path = require("path");
+
 const app = express();
 
-app.use("/", express.static("./"));
+app.use(express.static(path.join(__dirname, "flutter")));
 
-app.get("/home", (res, _) =>
-  res.send(require("fs").readFileSync("index.html")),
-);
-
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
+});
